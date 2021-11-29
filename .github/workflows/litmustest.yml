@@ -26,16 +26,16 @@ jobs:
         kube-score: '1.10.1'
     - run: |
         kubectl version --client
-        kustomize version
-        helm version
-        helmv2 version --client
-        kubeval --version
-        conftest --version
-        yq --version
-        rancher --version
-        tilt version
-        skaffold version
-        kube-score version
+#        kustomize version
+#        helm version
+#        helmv2 version --client
+#        kubeval --version
+#        conftest --version
+#        yq --version
+#        rancher --version
+#        tilt version
+#        skaffold version
+#        kube-score version
   build:
     
     runs-on: ubuntu-latest
