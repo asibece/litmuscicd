@@ -19,6 +19,8 @@ jobs:
         arch: amd64  
     - name: check aws cli PATH
       run: which aws
+    - name: check aws cli version
+      run: aws --version
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
