@@ -1,2 +1,2 @@
 # litmuscicd
-Testing Github action for litmus
+Testing Github action for litmusv2
