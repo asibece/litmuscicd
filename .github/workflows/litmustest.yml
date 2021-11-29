@@ -21,6 +21,8 @@ jobs:
       run: which aws
     - name: check aws cli version
       run: aws --version
+    - name: delete aws cli cache
+      run: rm ~/.aws/cli/cache
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
