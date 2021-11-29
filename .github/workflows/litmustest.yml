@@ -26,30 +26,30 @@ jobs:
     - name: kubectl test
       uses: actions-hub/kubectl@master
       env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}    
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}    
       with:
         args: get pods
     - name: check eks
       run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
     - name: check test kubeconfig
       run: cat ${{ secrets.KUBE_CONFIG_DATA }}
-    - name: Running pod delete chaos experiment
-      uses: litmuschaos/github-chaos-actions@v0.4.0
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        ##If litmus is not installed
-        INSTALL_LITMUS: true
-        ##Give application info under chaos
-        APP_NS: default
-        APP_LABEL: app=nginx
-        APP_KIND: deployment
-        EXPERIMENT_NAME: pod-delete
-        ##Custom images can also be used
-        EXPERIMENT_IMAGE: litmuschaos/go-runner
-        EXPERIMENT_IMAGE_TAG: latest
-        IMAGE_PULL_POLICY: Always     
-        TOTAL_CHAOS_DURATION: 30
-        CHAOS_INTERVAL: 10
-        FORCE: false
-        ##Select true if you want to uninstall litmus after chaos
-        LITMUS_CLEANUP: true
+#    - name: Running pod delete chaos experiment
+#      uses: litmuschaos/github-chaos-actions@v0.4.0
+#      env:
+#        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+#        ##If litmus is not installed
+#        INSTALL_LITMUS: true
+#        ##Give application info under chaos
+#        APP_NS: default
+#        APP_LABEL: app=nginx
+#        APP_KIND: deployment
+#        EXPERIMENT_NAME: pod-delete
+#        ##Custom images can also be used
+#        EXPERIMENT_IMAGE: litmuschaos/go-runner
+#        EXPERIMENT_IMAGE_TAG: latest
+#        IMAGE_PULL_POLICY: Always     
+#        TOTAL_CHAOS_DURATION: 30
+#        CHAOS_INTERVAL: 10
+#        FORCE: false
+#        ##Select true if you want to uninstall litmus after chaos
+#       LITMUS_CLEANUP: true
