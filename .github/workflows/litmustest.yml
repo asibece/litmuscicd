@@ -7,6 +7,35 @@ on:
    
 
 jobs:
+
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: yokawasa/action-setup-kube-tools@v0.7.1
+      with:
+        kubectl: '1.17.1'
+        kustomize: '3.7.0'
+        helm: '3.5.2'
+        helmv2: '2.16.7'
+        kubeval: '0.16.1'
+        conftest: '0.18.2'
+        rancher: '2.4.10'
+        tilt: '0.18.11'
+        skaffold: '1.20.0'
+        kube-score: '1.10.1'
+    - run: |
+        kubectl version --client
+        kustomize version
+        helm version
+        helmv2 version --client
+        kubeval --version
+        conftest --version
+        yq --version
+        rancher --version
+        tilt version
+        skaffold version
+        kube-score version
   build:
     
     runs-on: ubuntu-latest
@@ -23,11 +52,13 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1  
-    - name: install kubectl
-      uses: azure/setup-kubectl@v1
-      with:
-        version: '<version>' # default is latest stable
-      id: install
+#    - name: install kubectl
+#      uses: azure/setup-kubectl@v1
+#      with:
+#        version: '<version>' # default is latest stable
+#      id: install
+
+
     - name: kubectl test
       uses: actions-hub/kubectl@master
       env:
