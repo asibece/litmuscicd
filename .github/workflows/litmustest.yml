@@ -19,16 +19,20 @@ jobs:
         arch: amd64  
     - name: check aws cli PATH
       run: which aws
+    - name: check os version
+      run: uname
     - name: check aws cli version
       run: aws --version
-    - name: delete aws cli cache
-      run: rm ~/.aws/cli/cache
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1  
+    - name: check eks
+      run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
+    - name: check test kubeconfig
+      run: cat ${{ secrets.KUBE_CONFIG_DATA }}
     - name: Running pod delete chaos experiment
       uses: litmuschaos/github-chaos-actions@v0.4.0
       env:
