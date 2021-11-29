@@ -11,12 +11,20 @@ jobs:
     
     runs-on: ubuntu-latest
     steps:      
+    - name: install aws cli
+      uses: unfor19/install-aws-cli-action@v1
+      with:
+        version: 2     # default
+        verbose: false # default
+        arch: amd64  
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1  
+    - name: download kubeconfig file into local github env.
+      run: aws eks --region eu-central-1 update-kubeconfig --name litmus
     - name: Running pod delete chaos experiment
       uses: litmuschaos/github-chaos-actions@v0.4.0
       env:
