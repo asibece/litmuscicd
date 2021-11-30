@@ -57,7 +57,7 @@ jobs:
         aws eks --region eu-central-1 update-kubeconfig --name litmus
         kubectl config view --kubeconfig=/home/runner/.kube/config
         kubectl get nodes
-#      run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
+        kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
 
 #    - name: kubectl test
 #      uses: actions-hub/kubectl@master
