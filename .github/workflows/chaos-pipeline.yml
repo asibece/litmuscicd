@@ -48,8 +48,8 @@ jobs:
           EXPERIMENT_IMAGE_TAG: latest
           JOB_CLEANUP_POLICY: delete
 
-      - name: Uninstall Litmus
-        if: always()
-        uses: litmuschaos/github-chaos-actions@master
-        env:
-          LITMUS_CLEANUP: true
+#      - name: Uninstall Litmus
+#        if: always()
+#        uses: litmuschaos/github-chaos-actions@master
+#        env:
+#          LITMUS_CLEANUP: true
