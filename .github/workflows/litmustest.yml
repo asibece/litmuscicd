@@ -54,15 +54,16 @@ jobs:
     - name: check eks
       run: |
         kubectl config --help
-        kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
+        aws eks --region eu-central-1 update-kubeconfig --name litmus
+        
 #      run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
 
-    - name: kubectl test
-      uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}    
-      with:
-        args: get pods
+#    - name: kubectl test
+#      uses: actions-hub/kubectl@master
+#      env:
+#        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}    
+#      with:
+#        args: get pods
 
 
 #    - name: Running pod delete chaos experiment
