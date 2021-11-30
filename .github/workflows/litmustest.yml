@@ -44,8 +44,12 @@ jobs:
 #      with:
 #        version: '<version>' # default is latest stable
 #      id: install
-    - name: check test kubeconfig
-      run: more ${{ secrets.KUBE_CONFIG_DATA }} 
+#    - name: check test kubeconfig
+#      run: more ${{ secrets.KUBE_CONFIG_DATA }} 
+    - name: kubectl check
+      run: which kubectl 
+    - name: check homedir
+      run: pwd
     - name: check eks
       run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
 
