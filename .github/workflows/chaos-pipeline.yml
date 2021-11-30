@@ -54,4 +54,4 @@ jobs:
         if: always()
         uses: litmuschaos/github-chaos-actions@master
         env:
-          LITMUS_CLEANUP: true
+          LITMUS_CLEANUP: false
