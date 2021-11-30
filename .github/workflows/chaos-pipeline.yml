@@ -33,7 +33,7 @@ jobs:
       - name: Setup Litmus
         uses: litmuschaos/github-chaos-actions@master
         env:
-          INSTALL_LITMUS: true
+          INSTALL_LITMUS: false
           ##Give application info under chaos
           APP_NS: default
           APP_LABEL: app=nginx
