@@ -52,7 +52,9 @@ jobs:
     - name: check homedir
       run: pwd
     - name: check eks
-      run: kubectl config --help
+      run: |
+        kubectl config --help
+        kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
 #      run: kubectl config view --kubeconfig=${{ secrets.KUBE_CONFIG_DATA }}
 
     - name: kubectl test
