@@ -1,4 +1,4 @@
-# litmusci
+# litmusci2
 **Technova demo sample**
 
 Testing my new code with chaos tests using Github action. Developers can integrate the Chaos engineering in CI pipeline.
